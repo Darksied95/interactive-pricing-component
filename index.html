@@ -12,21 +12,25 @@
       <div class="sub-header">
         <h1>Simple, traffic-based pricing</h1>
         <p>
-          Sign-up for our 30-day trial.<br />
+          Sign-up for our 30-day trial.<br class="mobile" />
           No credit card required.
         </p>
       </div>
     </header>
     <main>
       <div class="main">
-        <h2>100K PAGEVIEWS</h2>
+        <h2 class="pageviews">100K PAGEVIEWS</h2>
+
         <div class="range_container">
           <input type="range" id="slider" />
           <div id="selector">
             <div id="selectBtn"></div>
           </div>
         </div>
-        <p><span id="amount">$16.00</span> / month</p>
+
+        <p class="amount">
+          <span id="amount">$16.00</span> <span id="season">/ month</span>
+        </p>
 
         <div class="billing">
           <p>Monthly Billing</p>
@@ -35,22 +39,27 @@
             <div class="switch_ball" id="switch_ball"></div>
           </div>
           <p>Yearly Billing</p>
-          <span>-25%</span>
+          <span
+            >-25%
+            <span class="desktop" style="display: inline">discount</span>
+          </span>
         </div>
       </div>
 
       <section>
-        <div>
-          <img src="./assets/icon-check.svg" />
-          <p>Unlimited websites</p>
-        </div>
-        <div>
-          <img src="./assets/icon-check.svg" />
-          <p>100% data ownership</p>
-        </div>
-        <div>
-          <img src="./assets/icon-check.svg" />
-          <p>Email reports</p>
+        <div class="perks">
+          <div>
+            <img src="./assets/icon-check.svg" />
+            <p>Unlimited websites</p>
+          </div>
+          <div>
+            <img src="./assets/icon-check.svg" />
+            <p>100% data ownership</p>
+          </div>
+          <div>
+            <img src="./assets/icon-check.svg" />
+            <p>Email reports</p>
+          </div>
         </div>
         <button>Start my trial</button>
       </section>
@@ -61,6 +70,7 @@
       const selector = document.getElementById("selector");
       const switch_container = document.getElementById("switch_container");
       const switch_ball = document.getElementById("switch_ball");
+      const season = document.getElementById("season");
       const amount = document.getElementById("amount");
 
       slider.oninput = function () {
@@ -74,7 +84,17 @@
         }
       };
 
-      switch_container.onclick = function () {};
+      switch_container.addEventListener("click", (e) => {
+        console.log(switch_ball.style.left);
+
+        if (switch_ball.style.left == "" || switch_ball.style.left == "3px") {
+          switch_ball.style.left = `30px`;
+          season.innerHTML = "/ year";
+        } else {
+          switch_ball.style.left = "3px";
+          season.innerHTML = "/ month";
+        }
+      });
     </script>
   </body>
 </html>
