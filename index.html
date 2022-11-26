@@ -20,12 +20,20 @@
     <main>
       <div class="main">
         <h2>100K PAGEVIEWS</h2>
-        <input type="range" />
-        <p><span>$16.00</span> / month</p>
+        <div class="range_container">
+          <input type="range" id="slider" />
+          <div id="selector">
+            <div id="selectBtn"></div>
+          </div>
+        </div>
+        <p><span id="amount">$16.00</span> / month</p>
 
         <div class="billing">
           <p>Monthly Billing</p>
-          <div></div>
+          <div id="switch_container">
+            <div class="switch"></div>
+            <div class="switch_ball" id="switch_ball"></div>
+          </div>
           <p>Yearly Billing</p>
           <span>-25%</span>
         </div>
@@ -47,5 +55,26 @@
         <button>Start my trial</button>
       </section>
     </main>
+
+    <script>
+      const slider = document.getElementById("slider");
+      const selector = document.getElementById("selector");
+      const switch_container = document.getElementById("switch_container");
+      const switch_ball = document.getElementById("switch_ball");
+      const amount = document.getElementById("amount");
+
+      slider.oninput = function () {
+        selector.style.left = this.value + "%";
+        if (this.value < 30) {
+          amount.innerHTML = `$0.00`;
+        } else if (this.value > 30 && this.value < 70) {
+          amount.innerHTML = "$16.00";
+        } else {
+          amount.innerHTML = "$32.00";
+        }
+      };
+
+      switch_container.onclick = function () {};
+    </script>
   </body>
 </html>
