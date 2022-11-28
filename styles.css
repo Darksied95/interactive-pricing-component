@@ -90,8 +90,15 @@ main {
   width: 100%;
   height: 7px;
   outline: none;
-  background-color: var(--clr-soft-cyan);
+  background-color: var(--clr-l-grayish-blue);
   border-radius: 3px;
+}
+#second_slider {
+  background-color: var(--clr-soft-cyan);
+  height: 7px;
+  width: 50%;
+  position: absolute;
+  top: 9px;
 }
 #slider::-webkit-slider-thumb {
   -webkit-appearance: none;
